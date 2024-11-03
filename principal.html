@@ -30,30 +30,74 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav nav-icons d-flex flex-row">
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link" href="#" id="cart-icon"><i class="bi bi-bag"></i></a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#"><i class="bi bi-person"></i></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="login-icon" onclick="abrirModalLogin()"><i class="bi bi-person"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <!-- MODAL INICIO SESION -->
+    <div id="login-modal" class="modal" style="display: none;">
+        <div class="modal-content login-content">
+            <span class="close" onclick="cerrarModalLogin()">&times;</span>
+
+            <!-- Título y subtítulo -->
+            <h2 class="login-title">Si tienes una cuenta inicia sesion en Fukusuke</h2>
+
+            <!-- Formulario de inicio de sesión -->
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="ejemplo@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña">
+                </div>
+
+                <!-- Enlaces de olvido de contraseña y registro -->
+                <a href="#" class="forgot-password">¿Olvidaste tu clave?</a>
+
+                <!-- Botón de inicio de sesión -->
+                <button type="button" class="btn btn-primary w-100" onclick="iniciarSesion()">Iniciar sesión</button>
+
+                <!-- Enlace de registro -->
+                <a href="#" class="register-link">¿No tienes cuenta? Regístrate</a>
+            </form>
+
+            <!-- Logo -->
+            <img src="imagenes/logo3.png" alt="Niu Foods" class="login-footer-logo">
+        </div>
+    </div>
+
+    <!-- Menú desplegable del perfil -->
+    <div id="menu-perfil" class="menu-perfil" style="display: none;">
+        <p class="bienvenida">Bienvenido, <span id="nombre-usuario">Usuario</span> :)</p>
+        <div class="perfil-opciones">
+            <a href="#" class="perfil-opcion"><i class="bi bi-person-circle"></i> Mi perfil</a>
+            <a href="#" class="perfil-opcion"><i class="bi bi-envelope"></i> Contáctanos</a>
+            <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
+        </div>
+    </div>
 
     <!-- Contenido principal -->
     <div class="content-wrapper d-flex align-items-center justify-content-center" style="min-height: 60vh;">
         <div class="text-center p-4 overlay">
             <h1 class="text-bold mb-4 text-white">¡Especialistas en comida asiática y fusiones!</h1>
             <div class="d-flex justify-content-center mb-3">
-                <button class="btn btn-outline-light me-2" onclick="setOrderType('delivery')">
+                <button class="btn btn-outline-light me-2" 
                     <i class="bi bi-bicycle"></i> Delivery
                 </button>
-                <button class="btn btn-outline-light ms-2" onclick="setOrderType('pickup')">
+                <button class="btn btn-outline-light ms-2"
                     <i class="bi bi-bag"></i> Para retirar
                 </button>
             </div>
-            <button class="btn btn-light btn-lg btn-pedir" onclick="window.location.href='carta.html'">Pedir</button>
+            <button class="btn btn-light btn-lg btn-pedir">Pedir</button>
         </div>
     </div>
 

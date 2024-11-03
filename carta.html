@@ -6,11 +6,15 @@
     <title>Fukusuke Sushi - Menú</title>
     <!-- Enlace a Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Enlace Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- CSS DE LA CARTA -->
     <link rel="stylesheet" href="carta.css">
+    <!-- CSS DEL CARRITO -->
     <link rel="stylesheet" href="carrito.css">
-
+    <!-- CSS DEL LOGIN-->
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
@@ -34,52 +38,98 @@
                         <a class="nav-link" href="#" id="cart-icon"><i class="bi bi-bag"></i></a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#"><i class="bi bi-person"></i></a>
+                        <a class="nav-link" href="#" id="login-icon" onclick="abrirModalLogin()"><i class="bi bi-person"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Carrito lateral -->
-    <div id="cart-sidebar" class="position-fixed top-0 end-0 h-100 p-4">
+    <!--CARRITO-->
+    <div id="cart-sidebar" class="position-fixed top-0 end-0 h-100 p-4 d-flex flex-column">
+        <!-- Encabezado del carrito -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4><strong>Tu carrito</strong></h4>
-            <button id="close-cart" class="btn-close">&times;</button>
+            <h2><strong>Tu carrito</strong></h2>
+            <button id="close-cart" class="btn-close"></button>
         </div>
-
-        <!-- Botón "Ingresar dirección" -->
-        <div class="d-flex justify-content-center mb-3">
-            <button id="enter-address" class="btn btn-custom">
-                <span class="icon-moto">🏍️</span>
-                <div class="text-container">
-                    <span class="main-text">Ingresar dirección</span>
-                    <small class="sub-text curved-text">Lo antes posible</small>
-                </div>
-            </button>
-        </div>
-
+        
+        <!-- Contenedor del botón de entrega -->
+        <div id="boton-entrega" class="mb-3"></div>
         <!-- Contenido del carrito -->
-        <div class="cart-content" id="cart-items">
+        <div id="cart-items" class="flex-grow-1 overflow-auto mb-3">
             <p><strong>¡Arma tu carrito ahora!</strong></p>
             <p>Los productos que agregues aparecerán aquí</p>
         </div>
-
-        <!-- Total -->
-        <div class="cart-total mt-3">
-            <strong>Total:</strong>
-            <strong id="total-amount">$0</strong>
+    
+        <!-- Sección fija en la parte inferior -->
+        <div class="mt-auto">
+            <!-- Total de productos y total a pagar -->
+            <div class="d-flex justify-content-between mb-2">
+                <span>Total Productos:</span>
+                <span id="cart-total-productos">0</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Total a Pagar:</span>
+                <span id="cart-subtotal">$0</span>
+            </div>
+    
+            <!-- Botón de acción -->
+            <button id="continuar-compra" class="btn btn-light w-100 mt-2">Ir al menú</button>
         </div>
-        <button id="go-to-menu">Ir al menu</button>
     </div>
 
-    <!--PROMOCIONES-->
+    <!-- MODAL INICIO SESION -->
+    <div id="login-modal" class="modal" style="display: none;">
+        <div class="modal-content login-content">
+            <span class="close" onclick="cerrarModalLogin()">&times;</span>
+
+            <!-- Título y subtítulo -->
+            <h2 class="login-title">Si tienes una cuenta inicia sesion en Fukusuke</h2>
+
+            <!-- Formulario de inicio de sesión -->
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="ejemplo@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña">
+                </div>
+
+                <!-- Enlaces de olvido de contraseña y registro -->
+                <a href="#" class="forgot-password">¿Olvidaste tu clave?</a>
+
+                <!-- Botón de inicio de sesión -->
+                <button type="button" class="btn btn-primary w-100" onclick="iniciarSesion()">Iniciar sesión</button>
+
+                <!-- Enlace de registro -->
+                <a href="#" class="register-link">¿No tienes cuenta? Regístrate</a>
+            </form>
+
+            <!-- Logo de NiuFoods -->
+            <img src="imagenes/logo3.png" alt="Niu Foods" class="login-footer-logo">
+        </div>
+    </div>
+
+    <!-- PERFIL USUARIO -->
+    <div id="menu-perfil" class="menu-perfil" style="display: none;">
+        <button class="btn-cerrar-menu" onclick="cerrarMenuPerfil()">X</button>
+            <p class="bienvenida">Bienvenido, <span id="nombre-usuario">Usuario</span> :)</p>
+            <div class="perfil-opciones">
+                <a href="#" class="perfil-opcion"><i class="bi bi-person-circle"></i> Mi perfil</a>
+                <a href="#" class="perfil-opcion"><i class="bi bi-envelope"></i> Contáctanos</a>
+                <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+    </div>
+
+    <!-- PROMOCIONES -->
     <div class="container my-4">
         <h1> Promociones </h1>
         <div class="row">
             <!-- Tarjeta 1 -->
-                <div class="col-md-4 col-lg-3">
-                    <div class="card">
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
                     <!--Descuento-->
                     <span class="discount-badge">-11%</span>
                     <img src="imagenes/promo1.webp" class="card-img-top" alt="Promo 1" data-bs-toggle="modal" data-bs-target="#promo1Modal">
@@ -87,76 +137,59 @@
                         <!--Nombre-->
                         <h5 class="card-title">Promo 1</h5>
                         <p class="card-text">
-                        <!--Precio antiguo-->
-                        <span class="old-price">$19.000</span> 
-                        <!--Precio Descuento-->
-                        <span class="new-price">$16.990</span>
-                        </p>
-                    </div>
-                    <!--Boton Agregar-->
-                    <button class="buy-btn">+</button>
-                    </div>
-                </div>
-            <!-- Tarjeta 2 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="card">
-                     <!--Descuento-->
-                    <span class="discount-badge">-9%</span>
-                    <img src="imagenes/promo2.webp" class="card-img-top" alt="Promo 2" data-bs-toggle="modal" data-bs-target="#promo2Modal">
-                    <div class="card-body">
-                         <!--Nombre-->
-                        <h5 class="card-title">Promo 2</h5>
-                        <p class="card-text">
                             <!--Precio antiguo-->
-                            <span class="old-price">$18.700</span> 
+                            <span class="old-price">$19.000</span> 
                             <!--Precio Descuento-->
                             <span class="new-price">$16.990</span>
                         </p>
                     </div>
                     <!--Boton Agregar-->
-                    <button class="buy-btn">+</button>
+                    <button class="buy-btn" data-source="carta" onclick="agregarProductoAlCarrito('Promo 1', 16990, 'imagenes/promo1.webp')">+</button>
                 </div>
             </div>
-    
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <span class="discount-badge">-9%</span>
+                    <img src="imagenes/promo2.webp" class="card-img-top" alt="Promo 2" data-bs-toggle="modal" data-bs-target="#promo2Modal">
+                    <div class="card-body">
+                        <h5 class="card-title">Promo 2</h5>
+                        <p class="card-text">
+                            <span class="old-price">$18.700</span> 
+                            <span class="new-price">$16.990</span>
+                        </p>
+                    </div>
+                    <button class="buy-btn" data-source="carta" onclick="agregarProductoAlCarrito('Promo 2', 16990, 'imagenes/promo2.webp')">+</button>
+                </div>
+            </div>
             <!-- Tarjeta 3 -->
             <div class="col-md-4 col-lg-3">
                 <div class="card">
-                     <!--Descuento-->
                     <span class="discount-badge">-14%</span>
                     <img src="imagenes/promo3.webp" class="card-img-top" alt="Promo 3" data-bs-toggle="modal" data-bs-target="#promo3Modal">
                     <div class="card-body">
-                         <!--Nombre-->
                         <h5 class="card-title">Promo 3</h5>
                         <p class="card-text">
-                            <!--Precio antiguo-->
                             <span class="old-price">$25.600</span> 
-                            <!--Precio Descuento-->
                             <span class="new-price">$21.990</span>
                         </p>
                     </div>
-                    <!--Boton Agregar-->
-                    <button class="buy-btn">+</button>
+                    <button class="buy-btn" data-source="carta" onclick="agregarProductoAlCarrito('Promo 3', 21990, 'imagenes/promo3.webp')">+</button>
                 </div>
             </div>
-    
             <!-- Tarjeta 4 -->
             <div class="col-md-4 col-lg-3">
                 <div class="card">
-                     <!--Descuento-->
                     <span class="discount-badge">-14%</span>
                     <img src="imagenes/promo4.webp" class="card-img-top" alt="Promo Pareja" data-bs-toggle="modal" data-bs-target="#promo4Modal">
                     <div class="card-body">
-                         <!--Nombre-->
                         <h5 class="card-title">Promo Pareja</h5>
                         <p class="card-text">
-                            <!--Precio antiguo-->
                             <span class="old-price">$20.990</span> 
-                            <!--Precio Descuento-->
                             <span class="new-price">$17.990</span>
                         </p>
                     </div>
-                    <!--Boton Agregar-->
-                    <button class="buy-btn">+</button>
+                    <button class="buy-btn" data-source="carta" onclick="agregarProductoAlCarrito('Promo Pareja', 17990, 'imagenes/promo4.webp')">+</button>
                 </div>
             </div>
         </div>

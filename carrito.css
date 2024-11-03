@@ -1,165 +1,182 @@
 /* -------------------- CARRITO -------------------- */
-
-/* Estilo general del cuerpo */
-body {
-    font-family: Arial, sans-serif; /* Fuente del texto */
-}
-
-/* Estilo del sidebar del carrito */
+/* -------------------- Estilo General del Carrito ------------------- */
 #cart-sidebar {
-    background-color: #2c2c2c; /* Fondo del carrito */
-    color: white; /* Color del texto */
-    width: 400px; /* Ancho del carrito */
-    transform: translateX(100%); /* Oculto por defecto, desplazado a la derecha */
-    transition: transform 0.3s ease; /* Transición suave */
-    display: flex; /* Utiliza flexbox para los elementos internos */
-    flex-direction: column; /* Apila elementos verticalmente */
-    height: 100%; /* Altura completa */
-    position: fixed; /* Fijo en la pantalla */
-    top: 0; /* Comienza desde la parte superior */
-    right: 0; /* Posicionado a la derecha */
-    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    width: 400px;
+    height: 100%;
+    background-color: #272729;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1050;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* Estilo del título dentro del carrito */
+/* -------------------- Estilo de Títulos y Textos ------------------- */
+#cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
 #cart-sidebar h4 {
-    margin-bottom: 20px; /* Margen inferior para el título */
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
-/* Botón para ir al menú */
-#go-to-menu {
-    background-color: #bb1313; /* Color de fondo rojo */
-    color: white; /* Color del texto en blanco */
-    border: none; /* Sin borde */
-    padding: 10px 20px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-    transition: background-color 0.3s; /* Transición suave para el fondo */
-}
-#go-to-menu:hover {
-    background-color: #a31010; /* Tono más oscuro al pasar el mouse */
+#cart-sidebar p, #cart-sidebar span,
+#cart-sidebar .d-flex span {
+    font-size: 14px;
 }
 
-/* Contenido del carrito */
-.cart-content {
-    flex-grow: 1; /* Permite que el contenido ocupe el espacio disponible */
+#cart-sidebar .d-flex strong {
+    font-weight: 700;
 }
 
-/* Elemento del carrito (item) */
-.cart-item {
-    padding: 10px; /* Espaciado interno */
-    border-bottom: 1px solid #5e5d5d; /* Línea separadora inferior */
-    display: flex; /* Flex para alinear elementos */
-    align-items: center; /* Alinear elementos verticalmente */
+/* -------------------- Botón de Continuar Compra  ------------------- */
+#continuar-compra {
+    font-size: 16px;
+    background-color: #d81616;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
 }
 
-/* Imagen del item del carrito */
-.cart-item img {
-    margin-right: 10px; /* Espacio entre la imagen y el resto */
+#continuar-compra:hover {
+    background-color: #d81616;
 }
 
-/* Botón para acciones en el item */
-.cart-item .btn {
-    background-color: #bb1313; /* Color de fondo rojo */
-    color: white; /* Color del texto en blanco */
-    border: none; /* Sin borde */
-    border-radius: 0%; /* Bordes redondeados para hacerlos circulares */
-    width: 40px; /* Ancho del botón */
-    height: 40px; /* Alto del botón */
-    display: flex; /* Flex para centrar el contenido */
-    justify-content: center; /* Centrar contenido horizontalmente */
-    align-items: center; /* Centrar contenido verticalmente */
-    font-size: 1.5rem; /* Tamaño de la fuente */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-    transition: background-color 0.3s; /* Transición suave para el fondo */
-}
-.cart-item .btn:hover {
-    background-color: #a31010; /* Cambia a un tono más oscuro al pasar el mouse */
-}
-
-/* Botones de modificar cantidad */
-.cart-item .btn-light {
-    background-color: #38383b; /* Color de fondo rojo */
-    color: white; /* Color del texto en blanco */
-    border: none; /* Sin borde */
-    border-radius: 50%; /* Bordes redondeados para hacerlos circulares */
-    width: 30px; /* Ancho del botón */
-    height: 30px; /* Alto del botón (igual que el ancho para hacerlo circular) */
-    display: flex; /* Flex para centrar el contenido */
-    justify-content: center; /* Centrar contenido horizontalmente */
-    align-items: center; /* Centrar contenido verticalmente */
-    font-size: 1.2rem; /* Tamaño de la fuente */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-    transition: background-color 0.3s; /* Transición suave para el fondo */
-}
-
-/* Botón de Editar */
-.cart-item .btn-outline-primary {
-    color: #ffffff; /* Texto en blanco */
-    padding: 0.375rem 0.75rem; /* Espaciado interno */
-    font-size: 0.875rem; /* Tamaño de la fuente */
-    border-radius: 0.25rem; /* Bordes ligeramente redondeados */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-    transition: all 0.3s ease-in-out; /* Transición suave */
-}
-.cart-item .btn-outline-primary:hover {
-    background-color: #007bff; /* Fondo azul al pasar el mouse */
-    color: white; /* Texto blanco al pasar el mouse */
-}
-
-/* Elemento que usa flex para alinear */
-.cart-item .d-flex {
-    align-items: center; /* Alinear verticalmente */
-}
-
-/* Total del carrito */
-.cart-total {
-    margin-top: 10px; /* Espacio entre el total y los items */
-    padding-top: 10px; /* Espacio superior */
-    border-top: 1px solid #424242; /* Línea para separar el total */
-    display: flex; /* Usar flexbox para alinear */
-    justify-content: space-between; /* Alinear total y precio */
-    font-weight: bold; /* Hacer el texto del total más destacado */
-    font-family: 'Roboto', sans-serif; /* Cambiar la tipografía aquí */
-    font-size: 1.2rem; /* Ajustar el tamaño de la fuente */
-    color: #f5f5f5; /* Color de la fuente */
-}
-
-/* Estilos personalizados para el botón */
-.btn-custom {
-    background-color: #4a4a4a; /* Color gris oscuro original */
-    color: #fff; /* Color del texto blanco */
-    border-radius: 50px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
+/* -------------------- Contenedor de Productos  ------------------- */
+.carrito-producto {
     display: flex;
-    align-items: center; /* Alinear verticalmente el ícono y el texto */
-    justify-content: start; /* Alinear contenido a la izquierda */
-    font-size: 1rem; /* Tamaño de texto */
-    width: 100%; /* Ancho completo del contenedor */
-    max-width: 500px; /* Ancho máximo */
-    transition: background-color 0.3s ease; /* Transición suave en el color */
+    align-items: start;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+    margin-bottom: 10px;
 }
 
-/* Estilos para el hover, se vuelve más claro */
-.btn-custom:hover {
-    background-color: #6a6a6a; /* Color más claro al pasar el cursor */
+/* -------------------- Imagen del Producto ------------------- */
+.carrito-img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
 }
 
-/* Ajustes del ícono de moto */
-.icon-moto {
-    font-size: 1.5rem; /* Tamaño del ícono */
-    margin-right: 10px; /* Espacio entre ícono y texto */
+/* -------------------- Detalles del Producto ------------------- */
+.carrito-detalle {
+    flex-grow: 1;
 }
 
-/* Contenedor para el texto */
-.text-container {
+.carrito-precio {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.carrito-extra {
+    margin: 5px 0;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* -------------------- Botones de Cantidad ------------------- */
+.carrito-detalle .btn {
+    font-size: 0.8rem;
+    padding: 6px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     display: flex;
-    flex-direction: column; /* Organizar el texto en dos líneas */
-    align-items: flex-start; /* Alinear ambos textos a la izquierda */
+    align-items: center;
+    justify-content: center;
+    background-color: #666;
+    color: #fff;
+    border: none;
 }
 
-/* Ajustes del texto principal y el pequeño */
-.main-text {
-    font-size: 1rem; /* Texto principal de "Ingresar dirección" */
-    margin-bottom: 2px; /* Espaciado inferior mínimo */
+.carrito-detalle .btn:hover {
+    background-color: #555;
+}
+
+/* -------------------- Botón de Editar ------------------- */
+.carrito-detalle .btn-secondary {
+    width: 70px;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background-color: #888;
+    color: #fff;
+    border: none;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.carrito-detalle .btn-editar:hover {
+    background-color: #777;
+}
+
+/* -------------------- Botón de Entrega ------------------- */
+.btn-entrega {
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-entrega i {
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+/* -------------------- Modal de Entrega ------------------- */
+#modal-entrega {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+#modal-entrega .modal-content {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2a2a2a;
+    color: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal-entrega .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* -------------------- Botones del Modal ------------------- */
+.btn-delivery, .btn-retirar, .btn-ingresar-direccion, .btn-confirmar {
+    font-family: 'Roboto', sans-serif;
 }

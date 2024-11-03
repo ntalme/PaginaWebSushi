@@ -1,160 +1,168 @@
-// Abrir y cerrar el carrito
-document.getElementById('cart-icon').addEventListener('click', function() {
-    const cartSidebar = document.getElementById('cart-sidebar');
-    cartSidebar.style.transform = 'translateX(0%)'; // Muestra el carrito
-});
-
-document.getElementById('close-cart').addEventListener('click', function() {
-    const cartSidebar = document.getElementById('cart-sidebar');
-    cartSidebar.style.transform = 'translateX(100%)'; // Oculta el carrito
-});
-
-// Array para almacenar los productos en el carrito
+// VARIABLES CARRITO
 let carrito = [];
 
-// Función para abrir el carrito
-function abrirCarrito() {
-    const cartSidebar = document.getElementById('cart-sidebar');
-    cartSidebar.style.transform = 'translateX(0%)'; // Muestra el carrito
-}
+// AGREGAR EL PRODUCTO AL APRETAR EL BOTON AGREGAR DEL MODAL
+function agregarProductoDesdeModal(nombre, precioBase, imagen, event, formId) {
+    // Verificar si el evento proviene del modal
+    const source = event?.target?.dataset?.source;
+    if (source !== 'modal') return;
 
-// Función para agregar productos al carrito
-function agregarAlCarrito(producto) {
-    // Buscar si el producto ya está en el carrito con el mismo nombre y los mismos extras
-    const productoExistente = carrito.find(item => 
-        item.nombre === producto.nombre && 
-        JSON.stringify(item.extras) === JSON.stringify(producto.extras)
+    // Detener la propagación del evento para evitar conflictos
+    event.stopPropagation();
+
+    // Obtener el extra seleccionado y su precio usando el formId específico
+    const extraSeleccionado = document.querySelector(`#${formId} input[name="extra"]:checked`);
+    let precioExtra = 0;
+    let nombreExtra = '';
+
+    // Verificar si se seleccionó un extra
+    if (extraSeleccionado) {
+        precioExtra = parseInt(extraSeleccionado.value); // Obtener el valor del extra
+        nombreExtra = extraSeleccionado.dataset.nombre || extraSeleccionado.nextElementSibling.textContent.trim(); // Obtener el nombre del extra
+    }
+
+    // Calcular el precio total con el extra
+    const precioTotal = precioBase + precioExtra;
+
+    // Verificar si el mismo producto con el mismo extra ya está en el carrito
+    const productoExistente = carrito.find(producto => 
+        producto.nombre === nombre && producto.extra === nombreExtra
     );
 
     if (productoExistente) {
-        // Incrementa la cantidad si el producto ya existe con los mismos extras
-        productoExistente.cantidad += producto.cantidad;
+        // Si el producto ya existe, incrementa la cantidad
+        productoExistente.cantidad++;
     } else {
-        // Si no existe, añade el nuevo producto al carrito
-        carrito.push(producto);
+        // Si no existe, agrega el producto como una nueva entrada
+        carrito.push({
+            nombre: nombre,
+            precio: precioTotal,
+            cantidad: 1,
+            imagen: imagen,
+            extra: nombreExtra
+        });
     }
 
-    actualizarCarrito(); // Actualiza la vista del carrito
+    actualizarCarrito(); // Actualizar la visualización del carrito
+    mostrarCarrito(); // Mostrar el carrito lateral
 }
 
-// Función para actualizar el contenido del carrito en el sidebar
-function actualizarCarrito() {
-    const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = ''; // Limpiar el contenido anterior
+// AGREGAR EL PRODUCTO AL CARRITO AL APRETAR EL BOTON +
+function agregarProductoAlCarrito(nombre, precio, imagen) {
+    const source = event?.target?.dataset?.source;
+    if (source !== 'carta') return;
 
-    if (carrito.length === 0) {
-        cartItems.innerHTML = `
-            <p><strong>¡Arma tu carrito ahora!</strong></p>
-            <p>Los productos que agregues aparecerán aquí</p>
-        `;
+    // Verificar si el producto ya existe en el carrito sin extras
+    const productoExistente = carrito.find(producto => 
+        producto.nombre === nombre && producto.extra === ''
+    );
+
+    if (productoExistente) {
+        // Si el producto ya existe, incrementar la cantidad
+        productoExistente.cantidad++;
     } else {
-        carrito.forEach(item => {
-            const extrasHTML = item.extras.length > 0 ? `<small>Extras: ${item.extras.join(', ')}</small>` : '';
-            
-            cartItems.innerHTML += `
-                <div class="cart-item d-flex justify-content-between align-items-center">
-                    <span>${item.nombre}</span>
-                    ${extrasHTML}
-                    <div class="d-flex align-items-center">
-                        <span class="mx-2">$${(item.precio * item.cantidad).toLocaleString('es-CL')}</span>
+        // Si no existe, agregar el producto como nueva entrada
+        carrito.push({
+            nombre: nombre,
+            precio: precio,
+            cantidad: 1,
+            imagen: imagen,
+            extra: ''
+        });
+    }
+
+    actualizarCarrito(); // Actualizar la visualización del carrito
+    mostrarCarrito(); // Mostrar el carrito lateral
+}
+
+// ACTUALIZAR CARRITO
+function actualizarCarrito() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalProductos = document.getElementById('cart-total-productos');
+    const subtotal = document.getElementById('cart-subtotal');
+    const botonContinuar = document.getElementById('continuar-compra');
+
+    // Limpiar el contenedor del carrito
+    cartItemsContainer.innerHTML = '';
+
+    // Variables para total de productos y subtotal
+    let totalCantidad = 0;
+    let totalPrecio = 0;
+
+    // Verificar si el carrito está vacío
+    if (carrito.length === 0) {
+        // Mostrar el mensaje de carrito vacío
+        cartItemsContainer.innerHTML = `
+            <p class="empty-message"><strong>¡Arma tu carrito ahora!</strong></p>
+            <p class="subtext">Los productos que agregues aparecerán aquí</p>
+        `;
+        botonContinuar.textContent = 'Ir al Menú';
+        botonContinuar.onclick = () => window.location.href = 'carta.html';
+    } else {
+        // Recorrer el carrito y generar el contenido
+        carrito.forEach((producto, index) => {
+            totalCantidad += producto.cantidad;
+            totalPrecio += producto.precio * producto.cantidad;
+
+            const productoElement = document.createElement('div');
+            productoElement.classList.add('carrito-producto', 'd-flex', 'align-items-start', 'mb-3');
+            productoElement.innerHTML = `
+                <div class="carrito-img me-2">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 60px; height: 60px; border-radius: 5px;">
+                </div>
+                <div class="carrito-detalle flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <strong>${producto.nombre}</strong>
+                        <span class="carrito-precio">$${producto.precio.toLocaleString('es-CL')}</span>
+                    </div>
+                    ${producto.extra ? `<p class="carrito-extra">Escoge tu Extra:<br> • ${producto.extra}</p>` : ''}
+                    <div class="d-flex align-items-center mt-2">
+                        <button class="btn btn-light btn-sm me-1" onclick="modificarCantidad(${index}, -1)">-</button>
+                        <span>${producto.cantidad}</span>
+                        <button class="btn btn-light btn-sm ms-1" onclick="modificarCantidad(${index}, 1)">+</button>
+                        <button class="btn btn-secondary btn-sm ms-3 ms-auto" onclick="editarProducto(${index})">Editar</button>
                     </div>
                 </div>
             `;
+            cartItemsContainer.appendChild(productoElement);
         });
 
-        const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-        document.getElementById('total-amount').innerHTML = `$${total.toLocaleString('es-CL', { minimumFractionDigits: 0 })}`;
-        document.getElementById('go-to-menu').innerText = 'Continuar';
-        localStorage.setItem('carrito', JSON.stringify(carrito));
+        botonContinuar.textContent = 'Continuar Compra';
+        botonContinuar.onclick = () => window.location.href = 'despacho.html';
     }
 
-    document.getElementById('go-to-menu').onclick = function() {
-        const botonTexto = this.innerText;
-        if (botonTexto === 'Ir al menú') {
-            window.location.href = 'carta.html'; 
-        } else if (botonTexto === 'Continuar') {
-            window.location.href = 'pago.html'; 
-        }
-    };
+    totalProductos.textContent = totalCantidad;
+    subtotal.textContent = `$${totalPrecio.toLocaleString('es-CL')}`;
 }
 
-// Función para incrementar cantidad de producto
-function incrementarCantidad(nombre) {
-    const producto = carrito.find(item => item.nombre === nombre);
-    if (producto) {
-        producto.cantidad += 1;
-        actualizarCarrito();
-    }
-}
-
-// Función para disminuir cantidad de producto
-function disminuirCantidad(nombre) {
-    const producto = carrito.find(item => item.nombre === nombre);
-    if (producto && producto.cantidad > 1) {
-        producto.cantidad -= 1;
+// FUNCION MODIFICAR CANTIDAD DE PRODUCTO EN EL CARRITO
+function modificarCantidad(index, cantidad) {
+    if (carrito[index].cantidad + cantidad > 0) {
+        carrito[index].cantidad += cantidad;
     } else {
-        carrito = carrito.filter(item => item.nombre !== nombre);
+        carrito.splice(index, 1);
     }
+    actualizarCarrito(); // Actualizar la visualización del carrito
+}
+
+// MOSTRAR U OCULTAR EL CARRITO LATERAL
+function mostrarCarrito() {
+    document.getElementById('cart-sidebar').style.transform = 'translateX(0)';
+}
+
+function ocultarCarrito() {
+    document.getElementById('cart-sidebar').style.transform = 'translateX(100%)';
+}
+
+// CERRAR EL CARRITO
+document.getElementById('close-cart').addEventListener('click', ocultarCarrito);
+
+// ABRIR EL CARRITO AL HACER CLIC EN EL ICONO DEL CARRITO
+document.getElementById('cart-icon').addEventListener('click', mostrarCarrito);
+
+// RESTABLECER EL CARRITO
+function vaciarCarrito() {
+    carrito = [];
     actualizarCarrito();
+    ocultarCarrito();
 }
-
-// Función para abrir el modal de edición
-function abrirModal(nombreProducto) {
-    const productoModalMap = {
-        'Promo 1': 'promo1Modal',
-        'Promo 2': 'promo2Modal',
-        'Promo 3': 'promo3Modal',
-        'Promo 4': 'promo4Modal',
-        'Gohan Especial': 'gohan1Modal',
-    };
-    
-    const modalId = productoModalMap[nombreProducto];
-    
-    if (modalId) {
-        const modalElement = document.getElementById(modalId);
-        if (modalElement) {
-            const modal = new bootstrap.Modal(modalElement);
-            modal.show();
-        } else {
-            console.error(`No se encontró un modal con el id: ${modalId}`);
-        }
-    } else {
-        console.error(`No se encontró un modal para el producto: ${nombreProducto}`);
-    }
-}
-
-//SOLO FUNCIONA PARA LA PROMO 1 Y LOS BOTONES + Y - NO FUNCIONAN CUANDO HAY EXTRAS
-// Evento para los botones de compra
-document.querySelectorAll('.buy-btn').forEach(button => {
-    button.addEventListener('click', function() {
-        const producto = {
-            nombre: this.parentElement.querySelector('.card-title').innerText,
-            precio: parseFloat(this.parentElement.querySelector('.new-price').innerText.replace(/\./g, '').replace('$', '')), // Asegúrate de que no haya puntos
-            imagen: this.parentElement.querySelector('img').src // Captura la imagen del producto
-        };
-        
-        // Agregar el producto con una cantidad inicial de 1 al carrito
-        agregarAlCarrito({ ...producto, cantidad: 1 });
-    });
-});
-
-// Evento para el botón "Agregar" en el modal
-document.getElementById('finalPrice').addEventListener('click', function() {
-    const cantidad = parseInt(document.getElementById('quantity').innerText);
-    const productoNombre = document.getElementById('promo1ModalLabel').innerText; // Obtiene el nombre del producto del modal
-    const precioBase = 16990; // Precio base
-
-    // Obtener el precio de los extras seleccionados
-    const extrasSeleccionados = document.querySelectorAll('input[name="extra"]:checked');
-    const extras = Array.from(extrasSeleccionados).map(extra => extra.labels[0].innerText.split('\n')[0].trim()); // Captura los nombres de los extras
-
-    const producto = {
-        nombre: productoNombre,
-        precio: precioBase + (extrasSeleccionados.length * 1000), // Sumar el precio base con el precio de los extras
-        imagen: 'imagenes/promo1.webp', // Asegúrate de que la imagen esté disponible
-        cantidad: cantidad,
-        extras: extras // Guarda los extras en el producto
-    };
-
-    agregarAlCarrito(producto);
-});
