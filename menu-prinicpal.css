@@ -1,0 +1,105 @@
+/* -------------------- ESTILO PARA EL NAVBAR -------------------- */
+.navbar {
+    /* Color oscuro de fondo */
+    background-color: #202020;
+}
+
+.navbar-nav .nav-link {
+    /* Color del texto */
+    color: white; 
+    /* Tamaño de fuente */
+    font-size: 18px;
+    /* Tipografía de los enlaces */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-nav .nav-link:hover {
+    /* Color del texto al pasar el mouse */
+    color: lightgray; 
+}
+
+.navbar-brand {
+    /* Color del ícono de ubicación */
+    color: white;
+    /* Tamaño de fuente para la marca */
+    font-size: 18px;
+}
+
+.nav-icons .nav-link {
+    /* Espaciado interno para los íconos de navegación */
+    padding: 0.5rem;
+}
+
+/* -------------------- ESTILO DEL WRAPPER -------------------- */
+.content-wrapper {
+    /* Altura mínima del contenedor */
+    min-height: 60vh; 
+    /* Utiliza flexbox para centrar el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Alineación de texto al centro */
+    text-align: center;
+    /* Posicionamiento relativo */
+    position: relative;
+}
+
+.overlay {
+    /* Espaciado interno */
+    padding: 20px;
+    /* Bordes redondeados */
+    border-radius: 10px;
+}
+
+/* -------------------- FONDO SUSHI -------------------- */
+body {
+    /* Imagen de fondo */
+    background-image: url('https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2024/06/17/17186166965831.jpg');
+    /* Ajustar la imagen para cubrir todo el área */
+    background-size: cover;
+    /* Centrar la imagen de fondo */
+    background-position: center;
+    /* Sin repetición de la imagen */
+    background-repeat: no-repeat;
+    /* Ajustar la altura al contenedor */
+    height: 100%; 
+    /* Sin margen */
+    margin: 0;
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+    /* Fondo oscuro para el pie de página */
+    background-color: #202020; 
+    /* Tipografía del pie de página */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer h5 {
+    /* Texto en negrita para el encabezado del pie de página */
+    font-weight: bold; 
+}
+
+footer a {
+    /* Sin subrayado en los enlaces */
+    text-decoration: none;
+}
+
+footer a:hover {
+    /* Efecto de color al pasar el mouse sobre los enlaces */
+    color: lightgray; 
+}
+
+.logo-footer {
+    /* Tamaño máximo del logo en pantallas grandes */
+    max-width: 100px; 
+    height: auto; /* Mantener proporción de la imagen */
+}
+
+/* -------------------- MEDIA QUERY PARA PANTALLAS PEQUEÑAS -------------------- */
+@media (max-width: 576px) {
+    .logo-footer {
+        /* Tamaño más pequeño para el logo en pantallas pequeñas */
+        max-width: 70px; 
+    }
+}

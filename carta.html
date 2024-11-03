@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fukusuke Sushi - Menú</title>
+    <!-- Enlace a Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="carta.css">
+    <link rel="stylesheet" href="carrito.css">
+
+</head>
+<body>
+
+    <!--MENU PRINCIPAL-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container p-3 justify-content-between align-items-center">
+            <a class="navbar-brand mx-auto mx-lg-0 p-2" href="menu-principal.html"> 
+                <img src="imagenes/logo2.png" alt="Logo" class="img-fluid" style="max-width: 120px; height: auto;">
+            </a>
+            <div class="d-flex align-items-center ms-auto">
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#">Carta</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="despacho.html">Despacho</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav nav-icons d-flex flex-row">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" id="cart-icon"><i class="bi bi-bag"></i></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><i class="bi bi-person"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrito lateral -->
+    <div id="cart-sidebar" class="position-fixed top-0 end-0 h-100 p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4><strong>Tu carrito</strong></h4>
+            <button id="close-cart" class="btn-close">&times;</button>
+        </div>
+
+        <!-- Botón "Ingresar dirección" -->
+        <div class="d-flex justify-content-center mb-3">
+            <button id="enter-address" class="btn btn-custom">
+                <span class="icon-moto">🏍️</span>
+                <div class="text-container">
+                    <span class="main-text">Ingresar dirección</span>
+                    <small class="sub-text curved-text">Lo antes posible</small>
+                </div>
+            </button>
+        </div>
+
+        <!-- Contenido del carrito -->
+        <div class="cart-content" id="cart-items">
+            <p><strong>¡Arma tu carrito ahora!</strong></p>
+            <p>Los productos que agregues aparecerán aquí</p>
+        </div>
+
+        <!-- Total -->
+        <div class="cart-total mt-3">
+            <strong>Total:</strong>
+            <strong id="total-amount">$0</strong>
+        </div>
+        <button id="go-to-menu">Ir al menu</button>
+    </div>
+
+    <!--PROMOCIONES-->
+    <div class="container my-4">
+        <h1> Promociones </h1>
+        <div class="row">
+            <!-- Tarjeta 1 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                    <!--Descuento-->
+                    <span class="discount-badge">-11%</span>
+                    <img src="imagenes/promo1.webp" class="card-img-top" alt="Promo 1" data-bs-toggle="modal" data-bs-target="#promo1Modal">
+                    <div class="card-body">
+                        <!--Nombre-->
+                        <h5 class="card-title">Promo 1</h5>
+                        <p class="card-text">
+                        <!--Precio antiguo-->
+                        <span class="old-price">$19.000</span> 
+                        <!--Precio Descuento-->
+                        <span class="new-price">$16.990</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                    </div>
+                </div>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                     <!--Descuento-->
+                    <span class="discount-badge">-9%</span>
+                    <img src="imagenes/promo2.webp" class="card-img-top" alt="Promo 2" data-bs-toggle="modal" data-bs-target="#promo2Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Promo 2</h5>
+                        <p class="card-text">
+                            <!--Precio antiguo-->
+                            <span class="old-price">$18.700</span> 
+                            <!--Precio Descuento-->
+                            <span class="new-price">$16.990</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                     <!--Descuento-->
+                    <span class="discount-badge">-14%</span>
+                    <img src="imagenes/promo3.webp" class="card-img-top" alt="Promo 3" data-bs-toggle="modal" data-bs-target="#promo3Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Promo 3</h5>
+                        <p class="card-text">
+                            <!--Precio antiguo-->
+                            <span class="old-price">$25.600</span> 
+                            <!--Precio Descuento-->
+                            <span class="new-price">$21.990</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 4 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                     <!--Descuento-->
+                    <span class="discount-badge">-14%</span>
+                    <img src="imagenes/promo4.webp" class="card-img-top" alt="Promo Pareja" data-bs-toggle="modal" data-bs-target="#promo4Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Promo Pareja</h5>
+                        <p class="card-text">
+                            <!--Precio antiguo-->
+                            <span class="old-price">$20.990</span> 
+                            <!--Precio Descuento-->
+                            <span class="new-price">$17.990</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- MODAL: Promocion 1 -->
+    <div class="modal fade" id="promo1Modal" tabindex="-1" aria-labelledby="promo1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/promo1.webp" alt="Promo 1" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="promo1ModalLabel"><strong>Promo 1</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>28 Piezas de sushi: 10 Acevichado maguro, 10 Avocado sake, 8 Hot sake fungi. Con 2 palitos, 2 salsas de soya, 1 salsa teriyaki, wasabi y jengibre.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice">Agregar - $16.990</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Promocion 2 -->
+    <div class="modal fade" id="promo2Modal" tabindex="-1" aria-labelledby="promo2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/promo2.webp" alt="Promo 2" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="promo2ModalLabel"><strong>Promo 2</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>28 piezas de sushi: 10 Tempura Tori, 10 Acevichado Roll, 8 Rige avocado roll con 2 palitos, 2 salsas de soya, 1 salsa teriyaki, wasabi y jengibre</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm2">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity2">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice2">Agregar - $16.990</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Promocion 3 -->
+    <div class="modal fade" id="promo3Modal" tabindex="-1" aria-labelledby="promo3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/promo3.webp" alt="Promo 3" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="promo3ModalLabel"><strong>Promo 3</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>38 Rolls de sushi: 10 Xhime roll, 10 Cheese sake, 8 Hot rige roll (sin arroz), 10 Avocado tori con 3 palitos, 3 salsas de soya, 2 salsas teriyaki, wasabi y jengibre</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm3">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity3">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice3">Agregar - 21.990</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- MODAL: Promocion 4 -->
+     <div class="modal fade" id="promo4Modal" tabindex="-1" aria-labelledby="promo4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/promo4.webp" alt="Promo 4" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="promo4ModalLabel"><strong>Promo Pareja</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>31 piezas de sushi: 10 avocado ebi, 10 tempura tori, 1 porción (5 piezas) gyozas de camarón, 6 ebi furay</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm4">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity4">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice4">Agregar - 17.990</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!--GOHANS -->
+    <div class="container my-4">
+        <h1> Gohans </h1>
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card product-card" data-bs-toggle="modal" data-bs-target="#gohanModal">
+                    <img src="imagenes/gohan1.webp" class="card-img-top" alt="Gohan Especial" data-bs-toggle="modal" data-bs-target="#gohan1Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Gohan Especial</h5>
+                        <p class="card-text">
+                            <!--Precio-->
+                            <span class="new-price">$8.800</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/gohan2.webp" class="card-img-top" alt="Gohan Fukusuke" data-bs-toggle="modal" data-bs-target="#gohan2Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Gohan Fukusuke</h5>
+                        <p class="card-text">
+                            <!--Precio-->
+                            <span class="new-price">$7.800</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/gohan3.webp" class="card-img-top" alt="Gohan Vegano" data-bs-toggle="modal" data-bs-target="#gohan3Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Gohan Vegano</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$5.800</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 4 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/gohan4.webp" class="card-img-top" alt="Promo 2 Gohan" data-bs-toggle="modal" data-bs-target="#gohan4Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Promo 2 Gohan</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                           <span class="new-price">$12.990</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- MODAL: Gohan Especial -->
+    <div class="modal fade" id="gohan1Modal" tabindex="-1" aria-labelledby="gohan1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/gohan1.webp" alt="Gohan Especial" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="gohan1ModalLabel"><strong>Gohan Especial</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>arroz, queso crema, palta, cebollin, sesamo, salmon y camaron furay.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm5">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity5">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice5">Agregar - $8.800</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Gohan Fukusuke -->
+    <div class="modal fade" id="gohan2Modal" tabindex="-1" aria-labelledby="gohan2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/gohan2.webp" alt="Gohan Fukusuke" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="gohan2ModalLabel"><strong>Gohan Fukusuke</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>arroz, queso crema, palta, cebollin, sesamo, salmon y camaron furay.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm6">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity6">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice6">Agregar - $7.800</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Gohan Vegano -->
+    <div class="modal fade" id="gohan3Modal" tabindex="-1" aria-labelledby="gohan3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/gohan3.webp" alt="Gohan Vegano" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="gohan3ModalLabel"><strong>Gohan Fukusuke</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>arroz, sésamo, cebollin,palta, palmito y choclillo.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm7">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity7">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice7">Agregar - $5.800</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- MODAL: 2 Gohan-->
+    <div class="modal fade" id="gohan4Modal" tabindex="-1" aria-labelledby="gohan4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/gohan4.webp" alt="Promo 2 Gohan" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="gohan4ModalLabel"><strong>Promo 2 Gohan</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>arroz, queso crema, palta, cebollin, sesamo, salmon y camaron furay.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm8">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity8">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice8">Agregar - $12.990</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--SUSHIS -->
+    <!--TEMPURAS-->
+    <div class="container my-4">
+        <h1> Tempura Rolls </h1>
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/Tempura1.webp" class="card-img-top" alt="Tempura Tori" data-bs-toggle="modal" data-bs-target="#tempura1Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Tempura Toki</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                           <span class="new-price">$5.800</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/tempura2.webp" class="card-img-top" alt="Tempura Sake" data-bs-toggle="modal" data-bs-target="#tempura2Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Tempura Sake</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$4.900</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/tempura3.webp" class="card-img-top" alt="Tempura Vegetariano" data-bs-toggle="modal" data-bs-target="#tempura3Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Tempura Vegetariano</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$5.200</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 4 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/tempura4.webp" class="card-img-top" alt="Tempura Fukusuke" data-bs-toggle="modal" data-bs-target="#tempura4Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Tempura Fukusuke</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                           <span class="new-price">$6.300</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- MODALS -->
+    <!-- MODAL: Tempura Toki-->
+    <div class="modal fade" id="tempura1Modal" tabindex="-1" aria-labelledby="tempura1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <!-- Columna para la imagen -->
+                    <div class="col-md-6">
+                        <img src="imagenes/tempura1.webp" alt="Tempura Tori" class="img-fluid modal-img">
+                    </div>
+                    <!-- Columna para el contenido -->
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="tempura1ModalLabel"><strong>Tempura Tori</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>pollo, queso crema y cebollín en panko.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm9">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity9">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice9">Agregar - $5.800</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Tempura Sake -->
+    <div class="modal fade" id="tempura2Modal" tabindex="-1" aria-labelledby="tempura2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/tempura2.webp" alt="Tempura Sake" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="tempura2ModalLabel"><strong>Tempura Sake</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>salmon, queso crema y ciboulette en panko.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm10">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama2">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama2" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo2">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo2" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun2">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun2" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon2">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon2" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron2">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron2" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity10">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice10">Agregar - $4.900</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Tempura Vegetariano -->
+    <div class="modal fade" id="tempura3Modal" tabindex="-1" aria-labelledby="tempura3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/tempura3.webp" alt="Tempura Vegetariano" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="tempura3ModalLabel"><strong>Tempura Vegetariano</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>palmito, queso crema y ciboulette en panko.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm11">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama3">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama3" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo3">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo3" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun3">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun3" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon3">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon3" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron3">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron3" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity11">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice11">Agregar - $5.200</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Tempura Fukusuke -->
+    <div class="modal fade" id="tempura4Modal" tabindex="-1" aria-labelledby="tempura4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/tempura4.webp" alt="Tempura Fukusuke" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="tempura4ModalLabel"><strong>Tempura Fukusuke</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camaron salmón, queso crema y ciboulette en panko.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm12">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama4">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama4" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo4">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo4" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun4">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun4" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon4">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon4" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron4">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron4" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity12">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice12">Agregar - 6.300</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--AVOCADOS-->
+    <div class="container my-4">
+        <h1> Avocados Rolls </h1>
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/avocado1.webp" class="card-img-top" alt="Avocado Tori" data-bs-toggle="modal" data-bs-target="#avocado1Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Avocado Toki</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$5.300</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/avocado2.webp" class="card-img-top" alt="Avocado Sake" data-bs-toggle="modal" data-bs-target="#avocado2Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Avocado Sake</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$6.000</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/avocado3.webp" class="card-img-top" alt="Avocado Vegetariano" data-bs-toggle="modal" data-bs-target="#avocado3Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Avocado Vegetariano</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$5.100</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/avocado4.webp" class="card-img-top" alt="Avocado Fukusuke" data-bs-toggle="modal" data-bs-target="#avocado4Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">Avocado Fukusuke</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                        <span class="new-price">$6.200</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- MODAL: Avocado Toki 1 -->
+    <div class="modal fade" id="avocado1Modal" tabindex="-1" aria-labelledby="avocado1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/avocado1.webp" alt="Avocado Tori" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="avocado1ModalLabel"><strong>Avocado Tori</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>pollo teriyaki, queso crema y ciboulette envuelto en palta.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm13">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama5">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama5" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo5">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo5" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun5">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun5" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon5">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon5" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron5">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron5" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity13">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice13">Agregar - $5.300</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Avocado Sake -->
+    <div class="modal fade" id="avocado2Modal" tabindex="-1" aria-labelledby="avocado2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/avocado2.webp" alt="Avocado Sake" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="avocado2ModalLabel"><strong>Avocado Sake</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>salmón, queso crema y ciboulette envuelto en palta.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm14">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama6">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama6" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo6">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo6" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun6">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun6" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon6">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon6" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron6">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron6" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity14">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice14">Agregar - $6.000</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Avocado Vegetariano-->
+    <div class="modal fade" id="avocado3Modal" tabindex="-1" aria-labelledby="avocado3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/avocado3.webp" alt="Avocado Vegetariano" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="avocado3ModalLabel"><strong>Avocado Vegetariano</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>palmito, queso crema y ciboulette envuelto en palta.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm15">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama7">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama7" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo7">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo7" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun7">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun7" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon7">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon7" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron7">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron7" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity15">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice15">Agregar - $5.100</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Avocado Fukusuke -->
+    <div class="modal fade" id="avocado4Modal" tabindex="-1" aria-labelledby="avocado4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/avocado4.webp" alt="Avocado Fukusuke" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="avocado4ModalLabel"><strong>Avocado Fukusuke</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camaron furay , palta, massago, envuelto en palta.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm16">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama8">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama8" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo8">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo8" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun8">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun8" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon8">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon8" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron8">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron8" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity16">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice16">Agregar - $6.200</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--CHEESE-->
+    <div class="container my-4">
+        <h1> Cheese Rolls </h1>
+            <div class="row">
+                <!-- Tarjeta 1 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                        <img src="imagenes/cheese1.webp" class="card-img-top" alt="Cheese Tori" data-bs-toggle="modal" data-bs-target="#cheese1Modal">
+                        <div class="card-body">
+                             <!--Nombre-->
+                            <h5 class="card-title">Cheese Tori</h5>
+                            <p class="card-text">
+                                 <!--Precio-->
+                            <span class="new-price">$5.800</span>
+                            </p>
+                        </div>
+                        <!--Boton Agregar-->
+                        <button class="buy-btn">+</button>
+                    </div>
+                </div>
+        
+                <!-- Tarjeta 2 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                        <img src="imagenes/cheese2.webp" class="card-img-top" alt="Cheese Sake" data-bs-toggle="modal" data-bs-target="#cheese2Modal">
+                        <div class="card-body">
+                             <!--Nombre-->
+                            <h5 class="card-title">Cheese Sake</h5>
+                            <p class="card-text">
+                                 <!--Precio-->
+                                <span class="new-price">$6.200</span>
+                            </p>
+                        </div>
+                        <!--Boton Agregar-->
+                        <button class="buy-btn">+</button>
+                    </div>
+                </div>
+        
+                <!-- Tarjeta 3 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                        <img src="imagenes/cheese3.webp" class="card-img-top" alt="Cheese Vegetariano" data-bs-toggle="modal" data-bs-target="#cheese3Modal">
+                        <div class="card-body">
+                             <!--Nombre-->
+                            <h5 class="card-title">Cheese Vegetariano</h5>
+                            <p class="card-text">
+                                 <!--Precio-->
+                                <span class="new-price">$5.500</span>
+                            </p>
+                        </div>
+                        <!--Boton Agregar-->
+                        <button class="buy-btn">+</button>
+                    </div>
+                </div>
+        
+                <!-- Tarjeta 4 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                        <img src="imagenes/cheese4.webp" class="card-img-top" alt="Cheese Fukusuke" data-bs-toggle="modal" data-bs-target="#cheese4Modal">
+                        <div class="card-body">
+                             <!--Nombre-->
+                            <h5 class="card-title">Cheese Fukusuke</h5>
+                            <p class="card-text">
+                                 <!--Precio-->
+                            <span class="new-price">$6.200</span>
+                            </p>
+                        </div>
+                        <!--Boton Agregar-->
+                        <button class="buy-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODALS -->
+    <!-- MODAL: Cheese Tori-->
+    <div class="modal fade" id="cheese1Modal" tabindex="-1" aria-labelledby="cheese1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/cheese1.webp" alt="Cheese Tori" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="cheese1ModalLabel"><strong>Cheese Tori</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>pollo teriyaki, palta envuelto en queso crema.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm17">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama9">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama9" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo9">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo9" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun9">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun9" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon9">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon9" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron9">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron9" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity17">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice17">Agregar - $5.800</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Cheese Sake -->
+    <div class="modal fade" id="cheese2Modal" tabindex="-1" aria-labelledby="cheese2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/cheese2.webp" alt="Cheese Sake" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="cheese2ModalLabel"><strong>Cheese Sake</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>salmón, palta envuelto en queso crema.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm18">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama10">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama10" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo10">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo10" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun10">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun10" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon10">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon10" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron10">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron10" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity18">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice18">Agregar - $6.200</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Cheese Vegetariano -->
+    <div class="modal fade" id="cheese3Modal" tabindex="-1" aria-labelledby="cheese3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/cheese3.webp" alt="Cheese Vegetariano" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="cheese3ModalLabel"><strong>Cheese Vegetariano</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>palmito, palta envuelto en queso crema.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm19">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama11">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama11" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo11">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo11" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun11">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun11" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon11">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon11" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron11">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron11" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity19">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice19">Agregar - $5.500</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Cheese Fukusuke -->
+    <div class="modal fade" id="cheese4Modal" tabindex="-1" aria-labelledby="cheese4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/cheese4.webp" alt="Cheese Fukusuke" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="cheese4ModalLabel"><strong>Cheese Fukusuke</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camaron furay, palta envuelto en queso crema.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm20">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama12">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama12" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo12">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo12" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun12">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun12" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon12">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon12" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron12">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron12" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity20">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice20">Agregar - $6.200</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--CALIFORNIA-->
+    <div class="container my-4">
+        <h1> California Rolls </h1>
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/california1.webp" class="card-img-top" alt="California Tori" data-bs-toggle="modal" data-bs-target="#california1Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">California Tori</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                           <span class="new-price">$5.100</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/california2.webp" class="card-img-top" alt="California Sake" data-bs-toggle="modal" data-bs-target="#california2Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">California Sake</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$5.400</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/california3.webp" class="card-img-top" alt="California Vegetariano" data-bs-toggle="modal" data-bs-target="#california3Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">California Vegetariano</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                            <span class="new-price">$4.500</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 4 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="imagenes/california4.webp" class="card-img-top" alt="California Fukusuke" data-bs-toggle="modal" data-bs-target="#california4Modal">
+                    <div class="card-body">
+                         <!--Nombre-->
+                        <h5 class="card-title">California Fukusuke</h5>
+                        <p class="card-text">
+                             <!--Precio-->
+                           <span class="new-price">$5.600</span>
+                        </p>
+                    </div>
+                    <!--Boton Agregar-->
+                    <button class="buy-btn">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- MODAL: California Tori -->
+    <div class="modal fade" id="california1Modal" tabindex="-1" aria-labelledby="california1ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/california1.webp" alt="California Tori" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="california1ModalLabel"><strong>California Tori</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camarón, aguacate y mayonesa.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm21">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama13">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama13" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo13">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo13" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun13">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun13" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon13">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon13" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron13">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron13" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity21">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice21">Agregar - $5.100</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: California Sake -->
+    <div class="modal fade" id="california2Modal" tabindex="-1" aria-labelledby="california2ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/california2.webp" alt="California Sake" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="california2ModalLabel"><strong>California Sake</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camarón, aguacate y mayonesa.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm22">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama14">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama14" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo14">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo14" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun14">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun14" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon14">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon14" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron14">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron14" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity22">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice22">Agregar - $5.400</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: California Vegetariano -->
+    <div class="modal fade" id="california3Modal" tabindex="-1" aria-labelledby="california3ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/california3.webp" alt="California Vegetariano" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="california3ModalLabel"><strong>California Vegetariano</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camarón, aguacate y mayonesa.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm23">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama15">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama15" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo15">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo15" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun15">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun15" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon15">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon15" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron15">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron15" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity23">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice23">Agregar - $4.500</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: California Fukusuke -->
+    <div class="modal fade" id="california4Modal" tabindex="-1" aria-labelledby="california4ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="imagenes/california4.webp" alt="California Fukusuke" class="img-fluid modal-img"> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="california4ModalLabel"><strong>California Fukusuke</strong></h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column">
+                            <p>camarón, aguacate y mayonesa.</p>
+                            <h5>Escoge tu Extra</h5>
+                            <form id="extrasForm24">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="kanikama16">
+                                        Kanikama<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="kanikama16" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="pollo16">
+                                        Pollo<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="pollo16" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="atun16">
+                                        Atún<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="atun16" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="salmon16">
+                                        Salmón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="salmon16" value="1000">
+                                </div>
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <label class="form-check-label me-2" for="camaron16">
+                                        Camarón<br>
+                                        <span class="extra-price">$1.000</span>
+                                    </label>
+                                    <input class="form-check-input" type="radio" name="extra" id="camaron16" value="1000">
+                                </div>
+                            </form>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <button class="btn btn-menos btn-circle">-</button>
+                                <span id="quantity24">1</span>
+                                <button class="btn btn-mas btn-circle">+</button>
+                                <button class="btn btn-primary" id="finalPrice24">Agregar - $5.600</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="imagenes/logo2.png" alt="Logo" class="img-fluid mb-3 logo-footer">
+                </div>
+                <div class="col-md-3">
+                    <h5>Conócenos</h5>
+                    <ul class="list-unstyled">
+                        <li>Mar de Chile 516, Maipu, Santiago.</li>
+                        <li>Whatsapp</li>
+                        <li>+56 2 2762 5080</li>
+                        <li><a href="#" class="text-light">Información Legal</a></li>
+                        <li><a href="#" class="text-light">Términos y Condiciones de Uso</a></li>
+                        <li><a href="#" class="text-light">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Redes sociales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Instagram</a></li>
+                        <li><a href="#" class="text-light">Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Mi cuenta</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Pedir</a></li>
+                        <li><a href="#" class="text-light">Iniciar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Agregar Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="carrito.js"></script>
+    <script src="carta.js"></script>
+    <script src="modal-carta.js"></script>
+</body>
+</html>
